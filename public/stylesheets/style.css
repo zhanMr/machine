@@ -8,7 +8,12 @@ a{
 body {
   font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #f6f6f6;
-  padding:20px 0;
+
+}
+header{
+  background: #fff;
+  padding:5px 0;
+  margin-bottom: 15px;
 }
 .container{
   width: 1000px;
