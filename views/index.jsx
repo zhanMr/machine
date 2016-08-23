@@ -12,12 +12,10 @@ class Index extends React.Component{
                                 <article>
                                     <h2><a href={`/detail?id=${item.id}`}>{item.title}</a></h2>
                                     <p className="introduction">{item.introduction}</p>
-                                    <p className="read"><a href={`/detail?id=${item.id}`}>阅读全文</a></p>
                                 </article>
                             )
                         })}
                     </div>
-                    <div className="right"></div>
                 </div>
             </Layout>
         )
