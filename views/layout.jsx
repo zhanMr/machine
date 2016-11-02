@@ -18,6 +18,7 @@ let Layout = React.createClass({
                     <div>{this.props.children}</div>
                     </div>
                 </body>
+                <script src="/javascripts/login_bundle.js"></script>
             </html>
         )
     }
