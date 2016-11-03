@@ -2,12 +2,12 @@ var webpack = require('webpack');
 module.exports = {
     devtool: "#inline-source-map",
     entry: {
-        blog: "./public/blog/entry.js",
-        login: "./public/login/entry.js"
+        myblog: "./public/javascripts/myblog/entry.js",
+        webapp: "./public/javascripts/webapp/entry.js"
     },
     output: {
         path: __dirname,
-        filename: "./public/javascripts/[name]_bundle.js"
+        filename: "./public/javascripts/[name].js"
     },
     module: {
         loaders: [

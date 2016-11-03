@@ -2,7 +2,7 @@
 let express = require('express');
 let ctypo = require('crypto');
 let router = express.Router();
-let db = require('./../db');
+let db = require('./../util/db');
 
 function encrypt(str, type){
     let hash = ctypo.createHash(type);

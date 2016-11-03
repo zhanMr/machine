@@ -22,10 +22,10 @@ class Login extends React.Component{
         //this.setState({status: false});
         $.ajax({
             type: 'post',
-            url: '/login',
+            url: '/myblog/login',
             data: {user, password},
             success: msg => {
-                if(msg.success) location.href = '/index';
+                if(msg.success) location.href = '/myblog/index';
 
             },
             error: msg=> {
