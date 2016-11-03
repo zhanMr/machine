@@ -1,6 +1,6 @@
 'use strict';
 let express = require('express');
-let db = require('./db');
+let db = require('./../db');
 let router = express.Router();
 
 /* GET home page. */

@@ -4,11 +4,12 @@ let path = require('path');
 let favicon = require('static-favicon');
 let logger = require('morgan');
 let cookieParser = require('cookie-parser');
+let session = require('express-session');
 let bodyParser = require('body-parser');
 
-let routes = require('./routes/index');
-let detail = require('./routes/detail');
-let login = require('./routes/login');
+let routes = require('./routes/webapp/index');
+let detail = require('./routes/webapp/detail');
+let login = require('./routes/myblog/login');
 
 let app = express();
 
@@ -22,12 +23,20 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+;
 app.use(express.static(path.join(__dirname, 'public')));
+
+//中间件
+/*app.get('/!*', (req, res, next) => {
+    console.log(req.session);
+   console.log('xxx');
+    next();
+})*/
 
 app.use('/', routes);
 app.use('/index', routes);
 app.use('/detail', detail);
-app.use('/login', login);
+app.use('/myblog/login', login);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

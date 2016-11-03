@@ -1,5 +1,5 @@
 let React = require('react');
-let Layout = require('./layout');
+let Layout = require('./../layout');
 class Index extends React.Component{
     render(){
         let {title} = this.props;
