@@ -11,6 +11,7 @@ let routes = require('./routes/webapp/index');
 let detail = require('./routes/webapp/detail');
 let myblog_login = require('./routes/myblog/login');
 let myblog_index = require('./routes/myblog/index');
+let myblog_user = require('./routes/myblog/user');
 
 let app = express();
 
@@ -39,6 +40,7 @@ app.use('/index', routes);
 app.use('/detail', detail);
 app.use('/myblog/login', myblog_login);
 app.use('/myblog/index', myblog_index);
+app.use('/myblog/user', myblog_user);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
