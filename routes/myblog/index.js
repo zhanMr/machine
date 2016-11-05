@@ -4,6 +4,7 @@ let router = express.Router();
 let db = require('./../util/db');
 
 router.get('/', function(req, res) {
+    console.log('哈哈');
     res.render('myblog/index', { title: '后台首页'});
 });
 

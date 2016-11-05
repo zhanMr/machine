@@ -9,7 +9,7 @@ router.get('/',(req, res)=> {
     let sql = 'select * from content where id = ' + id;
     db(sql, (err, rows, fields) => {
         if(!err && rows && rows.length){
-            res.render('detail', { title: rows[0].title , data: rows[0]});
+            res.render('webapp/detail', { title: rows[0].title , data: rows[0]});
         }else{
             res.redirect('/index');
         }

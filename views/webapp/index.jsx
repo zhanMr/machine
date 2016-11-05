@@ -15,7 +15,16 @@ class Index extends React.Component{
                                 </article>
                             )
                         })}
+                        {data.map((item, key) => {
+                            return (
+                                <article>
+                                    <h2><a href={`/detail?id=${item.id}`}>{item.title}</a></h2>
+                                    <p className="introduction">{item.introduction}</p>
+                                </article>
+                            )
+                        })}
                     </div>
+                    <div className="right">123</div>
                 </div>
             </Layout>
         )

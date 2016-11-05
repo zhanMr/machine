@@ -9,12 +9,13 @@ let Layout = React.createClass({
                     <link href="/stylesheets/style.css" rel="stylesheet"/>
                 </head>
                 <body>
+                <header>
+                    <ul>
+                        <li><a href="/index">首页</a></li>
+                    </ul>
+                </header>
                     <div className="box">
-                    <header>
-                        <ul>
-                            <li><a href="/index">首页</a></li>
-                        </ul>
-                    </header>
+
                     <div>{this.props.children}</div>
                     </div>
                 </body>
