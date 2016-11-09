@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            padding:0px;
+            margin:0px;
+
+        }
+        body{
+            padding:10px 0 0 100px;
+            background:#000
+        }
+        p{
+            padding:6px;
+        }
+        p[id$="ba"]{
+            color:red
+        }
+        li{
+            display: inline-block;
+        }
+
+        p::first-line{
+            color:red
+        }
+        p::first-letter{
+            font-size:20px;
+        }
+        p{
+            text-shadow: 1px 1px 1px #ccc;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            background: radial-gradient(center, ellipse cover, #ffffff 72%, red 100%);
+        }
+
+        #content a{
+            text-decoration: none;
+            font: 2.25em /* 36px ÷ 16 */ 'BebasNeueRegular';
+            background-color: #b01c20;
+            border-radius: 8px;
+            color: #ffffff;
+            padding: 3%;
+            float: left;
+            background: linear-gradient(90deg, #b01c20 0%, #f15c60 100%);
+            margin-top: 30px;
+            box-shadow: 5px 5px 5px hsla(0, 0%, 26.6667%, 0.8);
+            text-shadow: 0px 1px black;
+            border: 1px solid #bfbfbf;
+        }
+        #content a:hover{
+
+            border:1px soild #000;
+            color:#000;
+            text-shadow: 0px 1px white;
+            transition: all 1s ease 0s;
+            transform: translate(40px, 10px);
+        }
+        @keyframes warnning{
+            0%{
+                background-color:red
+            }
+            40%{
+                background-color:blue
+            }
+            60%{
+                background-color:yellow
+            }
+            60%{
+                background-color:white
+            }
+            100%{
+                background-color:red
+            }
+        }
+        #my{
+            width:100px;
+            height:100px;
+            animation: warnning 12.5s infinite ease;
+        }
+    </style>
+</head>
+<body>
+<div id="my"></div>
+<div id="content"><a>TEST SHOULD HAVE WON</a></div>
+<div id="box">xxxx</div>
+<div id="wrapper">
+    <img src="http://dimg04.c-ctrip.com/images/vacations/images2/23/1261/1261_01_C_360_202.jpg"/>
+</div>
+
+    <nav role="navigation">
+        <ul>
+            <li><a href="#">Why?</a></li>
+            <li><a href="#">Synopsis</a></li>
+            <li><a href="#">Stills/Photos</a></li>
+            <li><a href="#">Videos/clips</a></li>
+            <li><a href="#">Quotes</a></li>
+            <li><a href="#">Quiz</a></li>
+        </ul>
+    </nav>
+    <p>伪元素在 CSS2 中已经存在，CSS3 标准对其语法做了一些细微的修正。举几个你可能还有印象的例子，p:first-line 会选中标签的第一行内容，p:first-letter 会选中其中的第一个字母。CSS3 要求对伪元素使用两个冒号以便与伪类进行区别。因此刚才的例子应该改写为p::first-letter。但注意Internet Explorer 8 及更低版本的IE 无法识别两个冒号的语法，它们只识别一个冒号。:first-</p>
+
+
+
+<script>
+
+'use strict'
+
+    function sort(arr){
+        let len = arr.length;
+        let c;
+        while(len){
+            for(let i = 0; i < len; i++){
+                let a = arr[i];
+                let b = arr[i + 1];
+               if(a > b){
+                   c = a;
+                   arr[i] = b;
+                   arr[i + 1] = c;
+               }
+            }
+            len --;
+        }
+        return arr;
+    }
+    function sort2(arr){
+        let len = arr.length;
+        let c;
+        while(len){
+            for(let i = 0; i < len; i++){
+                let a = arr[i];
+                let b = arr[i + 1];
+
+                if(a > b){
+                    c = a;
+                    arr[i] = b;
+                    arr[i + 1] = c;
+                }
+
+            }
+
+            len --;
+        }
+        return arr;
+    }
+    function quick(arr){
+        let len = arr.length;
+        if(!len) return arr;
+        let middle = arr.splice(Math.floor(arr.length/2), 1)[0];
+        let left = [];
+        let right = [];
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i] > middle){
+                right.push(arr[i]);
+            }else{
+                left.push(arr[i]);
+            }
+        }
+        return quick(right).concat([middle], quick(left));
+    }
+
+    //console.log(sort([0,4,3,2,1]));
+    //console.log(sort2([0,4,3,2,1]));
+    //console.log(quick([-100, 0,4,3,2,1]));
+
+ function test(arr){
+     let newArr = [];
+     function mackArr(arr){
+
+
+         arr.forEach((item, index) => {
+             if(Array.isArray(item)){
+             mackArr(item);
+         }else{
+             newArr.push(item);
+         }
+     });
+         return newArr;
+     }
+     return mackArr(arr);
+ }
+  console.log(test([1,[[4,5,6],2,[[[7,8,9]]],3]]));
+
+
+
+
+    function mackUrl(url){
+       let arr = url.split('?');
+        let str = arr[1].split('&');
+        let cc = {};
+        str.forEach(item => {
+            let urls = item.split('=');
+            cc[urls[0]] = urls[1];
+        })
+        return cc;
+    }
+    //console.log(mackUrl('http://s.weibo.com/weibo/Aralic?topnav=1&wvr=6'));
+
+</script>
+</body>
+</html>

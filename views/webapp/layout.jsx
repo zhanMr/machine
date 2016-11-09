@@ -10,16 +10,18 @@ let Layout = React.createClass({
                 </head>
                 <body>
                 <header>
-                    <ul>
-                        <li><a href="/index">首页</a></li>
-                    </ul>
+                    <div>
+                        <ul>
+                            <li><a href="/index">Home</a></li>
+                            <li id="JS_Search"></li>
+                        </ul>
+                    </div>
                 </header>
                     <div className="box">
-
-                    <div>{this.props.children}</div>
+                        {this.props.children}
                     </div>
                 </body>
-                <script src="/javascripts/login_bundle.js"></script>
+                <script src="/javascripts/webapp.js"></script>
             </html>
         )
     }

@@ -6,12 +6,14 @@ class Index extends React.Component{
         return (
             <Layout title={title}>
                 <div className="container">
-                    <div className="left">
+                    <div className="art">
                         {data.map((item, key) => {
                             return (
                                 <article>
                                     <h2><a href={`/detail?id=${item.id}`}>{item.title}</a></h2>
+                                    <p className="time">2016/11/6</p>
                                     <p className="introduction">{item.introduction}</p>
+                                    <p className="read"><a href={`/detail?id=${item.id}`}>Read More&gt;&gt;</a></p>
                                 </article>
                             )
                         })}
@@ -19,12 +21,13 @@ class Index extends React.Component{
                             return (
                                 <article>
                                     <h2><a href={`/detail?id=${item.id}`}>{item.title}</a></h2>
+                                    <p className="time">2016/11/6</p>
                                     <p className="introduction">{item.introduction}</p>
+                                    <p class="read"><a href={`/detail?id=${item.id}`}>Read More&gt;&gt;</a></p>
                                 </article>
                             )
                         })}
                     </div>
-                    <div className="right">123</div>
                 </div>
             </Layout>
         )
