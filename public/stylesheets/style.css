@@ -12,3 +12,5 @@ article .time{font-size:0.4em}
 article p{margin: 0.5em 0 0 0;font-size:0.875em;}
 article .introduction{line-height:1.5em;font-size:1em;margin:1.5em 0}
 article .read a{text-decoration: underline;}
+.page li{display:inline-block;padding:0.5em;}
+.page .active a{color: #099fde;}

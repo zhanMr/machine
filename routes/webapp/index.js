@@ -8,13 +8,21 @@ const querystring = require('querystring');
 /* GET home page. */
 router.get('/', function(req, res) {
   let page = parseInt(req.query.page) || 1;
-  let num = 9;
   let param = querystring.parse(url.parse(req.url).query);
   let key = param && param.key;
-  let sql = key ? `select * from content where title LIKE '%${key}%' OR introduction LIKE '%${key}%'` : `select * from content order by id desc limit ${(page - 1)*num }, ${((page - 1)*num + 9)}`;
-  db(sql, (err, rows, fields) => {
-    res.render('webapp/index', { title: '首页' , data: rows, page: page, total: 90});
+  let sql;
+  let number = 4;
+  if(key){
+    sql = `select * from content where title LIKE '%${key}%' OR introduction LIKE '%${key}%'`;
+  }else{
+    sql = `select * from content ORDER BY id DESC limit ${(page - 1)*number}, ${page*number}`;
+  }
+  console.log(sql);
+  db(sql, (err, row, field) => {
+    db(`select COUNT(*) as Number from content`, (err, rows, fields) => {
+      res.render('webapp/index', { title: '首页' , data: row, page: page, number: Math.ceil(rows[0].Number/4)});
+    })
   })
-});
+})
 
 module.exports = router;
