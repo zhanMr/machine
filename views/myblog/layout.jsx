@@ -12,12 +12,12 @@ let Layout = React.createClass({
                     <header>
                         <h1>后台管理系统</h1>
                     </header>
-                    <section className="content">
+                    <section className="box">
                         <section className="left">
                             <ul>
-                                <li><a href="">文章列表</a></li>
+                                <li><a href="content">文章列表</a></li>
                                 <li><a href="add">新增文章</a></li>
-                                <li><a href="">留言查看</a></li>
+                                <li><a href="classify">文章分类</a></li>
                                 <li><a href="user">账号管理</a></li>
                             </ul>
                         </section>

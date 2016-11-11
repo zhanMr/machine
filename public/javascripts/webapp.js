@@ -54,7 +54,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _search = __webpack_require__(197);
+	var _search = __webpack_require__(198);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -31738,7 +31738,8 @@
 /* 194 */,
 /* 195 */,
 /* 196 */,
-/* 197 */
+/* 197 */,
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

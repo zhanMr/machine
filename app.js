@@ -13,6 +13,8 @@ let myblog_login = require('./routes/myblog/login');
 let myblog_index = require('./routes/myblog/index');
 let myblog_user = require('./routes/myblog/user');
 let myblog_add = require('./routes/myblog/add');
+let myblog_content = require('./routes/myblog/content');
+let myblog_classify = require('./routes/myblog/classify');
 
 let app = express();
 
@@ -43,6 +45,9 @@ app.use('/myblog/login', myblog_login);
 app.use('/myblog/index', myblog_index);
 app.use('/myblog/user', myblog_user);
 app.use('/myblog/add', myblog_add);
+app.use('/myblog/content', myblog_content);
+app.use('/myblog/classify', myblog_classify);
+
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

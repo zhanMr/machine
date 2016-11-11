@@ -4,18 +4,15 @@ import Login from './login';
 import Index from './index';
 import User from './user';
 import Message from './message';
+import Classify from './classify';
 
-if(document.getElementById('JS_Login')){
-    ReactDOM.render(<Login/>, document.getElementById('JS_Login'));
+function reactUI(id, item){
+    id = document.getElementById(id);
+    if(id) ReactDOM.render(item, id);
 }
+reactUI('JS_Login', <Login/>);
+reactUI('JS_Index', <Index/>);
+reactUI('JS_User', <User/>);
+reactUI('JS_Message', <Message/>);
+reactUI('JS_Classify',<Classify/>);
 
-if(document.getElementById('JS_Index')){
-    ReactDOM.render(<Index/>, document.getElementById('JS_Index'));
-}
-
-if(document.getElementById('JS_User')){
-    ReactDOM.render(<User/>, document.getElementById('JS_User'));
-}
-if(document.getElementById('JS_Message')){
-    ReactDOM.render(<Message />, document.getElementById('JS_Message'));
-}

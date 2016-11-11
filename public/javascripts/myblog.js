@@ -70,22 +70,21 @@
 
 	var _message2 = _interopRequireDefault(_message);
 
+	var _classify = __webpack_require__(197);
+
+	var _classify2 = _interopRequireDefault(_classify);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	if (document.getElementById('JS_Login')) {
-	    _reactDom2.default.render(_react2.default.createElement(_login2.default, null), document.getElementById('JS_Login'));
+	function reactUI(id, item) {
+	    id = document.getElementById(id);
+	    if (id) _reactDom2.default.render(item, id);
 	}
-
-	if (document.getElementById('JS_Index')) {
-	    _reactDom2.default.render(_react2.default.createElement(_index2.default, null), document.getElementById('JS_Index'));
-	}
-
-	if (document.getElementById('JS_User')) {
-	    _reactDom2.default.render(_react2.default.createElement(_user2.default, null), document.getElementById('JS_User'));
-	}
-	if (document.getElementById('JS_Message')) {
-	    _reactDom2.default.render(_react2.default.createElement(_message2.default, null), document.getElementById('JS_Message'));
-	}
+	reactUI('JS_Login', _react2.default.createElement(_login2.default, null));
+	reactUI('JS_Index', _react2.default.createElement(_index2.default, null));
+	reactUI('JS_User', _react2.default.createElement(_user2.default, null));
+	reactUI('JS_Message', _react2.default.createElement(_message2.default, null));
+	reactUI('JS_Classify', _react2.default.createElement(_classify2.default, null));
 
 /***/ },
 /* 1 */
@@ -60896,6 +60895,128 @@
 	return jQuery;
 	}));
 
+
+/***/ },
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(168);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _jquery = __webpack_require__(176);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//文章分类模块
+	var Classify = function (_React$Component) {
+	    _inherits(Classify, _React$Component);
+
+	    function Classify(props) {
+	        _classCallCheck(this, Classify);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Classify).call(this, props));
+
+	        _this.state = {
+	            data: [],
+	            classify: ''
+	        };
+	        return _this;
+	    }
+	    //初始化分类
+
+
+	    _createClass(Classify, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var self = this;
+	            _jquery2.default.ajax({
+	                type: 'get',
+	                url: '/myblog/classify/search',
+	                success: function success(msg) {
+	                    self.setState({ data: msg.data });
+	                },
+	                error: function error(msg) {
+	                    alert('网络错误，请重试');
+	                }
+	            });
+	        }
+	        //增加分类
+
+	    }, {
+	        key: 'addClassify',
+	        value: function addClassify() {
+	            var self = this;
+	            var _state = this.state;
+	            var data = _state.data;
+	            var classify = _state.classify;
+
+	            console.log(classify);
+	            _jquery2.default.ajax({
+	                type: 'post',
+	                url: '/myblog/classify/add',
+	                data: { classify: classify },
+	                success: function success(msg) {
+	                    data.unshift({ 'name': classify });
+	                    self.setState({ data: data });
+	                },
+	                error: function error(msg) {
+	                    alert('网络错误，请重试');
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'getClassify',
+	        value: function getClassify(e) {
+	            this.setState({ classify: e.target.value });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _state2 = this.state;
+	            var data = _state2.data;
+	            var classify = _state2.classify;
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    _react2.default.createElement('input', { type: 'text', value: classify, placeholder: '\u8BF7\u8F93\u5165\u6587\u7AE0\u5206\u7C7B', onChange: this.getClassify.bind(this) }),
+	                    _react2.default.createElement('input', { type: 'button', value: '\u63D0\u4EA4', onClick: this.addClassify.bind(this) })
+	                ),
+	                data.map(function (item, key) {
+	                    return _react2.default.createElement(
+	                        'div',
+	                        { key: key },
+	                        item.name
+	                    );
+	                })
+	            );
+	        }
+	    }]);
+
+	    return Classify;
+	}(_react2.default.Component);
+
+	exports.default = Classify;
 
 /***/ }
 /******/ ]);
