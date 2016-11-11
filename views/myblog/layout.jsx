@@ -15,7 +15,7 @@ let Layout = React.createClass({
                     <section className="box">
 
                         <section className="left">
-                            <h1>后台管理系统</h1>
+                       
                             <ul>
                                 <li><a href="content">List</a></li>
                                 <li><a href="add">Add</a></li>

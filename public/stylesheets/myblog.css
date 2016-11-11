@@ -1,14 +1,15 @@
 *{padding: 0px;margin: 0px;list-style: none;}
 html, body,.box{height:100%}
-body {font: 1em;background-color:#3a3f51;font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;color:#fff }
+body {font: 1em;font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 a{color:#fff;text-decoration: none;}
 a:hover{color: #009fde;text-decoration: underline;}
-header{background-color:#2577e3;color:#fff;padding:1em;display:none}
+header{background-color:#000;color:#fff;padding:1em;}
 header h1{font-size:1em;}
 .box{display:-webkit-box;display:box;font-size:0.875em}
 .left{width:15em;height:100%;}
 .left h1{text-align:center;}
 .left li{line-height:1.5;border-bottom:1px solid #ccc;padding: 1em 0 1em 2em}
+.left li a{color:#30a5ff}
 .right{height:100%;box-flex:1;-webkit-box-flex:1;border-left: 1px solid #ccc;padding:1.5em;background-color:#f2f4f8;color:#000}
 .content,.classify{padding:1.5em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc}
 .content section{padding:1.5em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc;margin: 0 0 1.5em 0}
@@ -19,6 +20,7 @@ header h1{font-size:1em;}
 .right{padding:0px;}
 .left{width:100%}
 }
+.classify{background-color:#fff}
 .classify p{display:-webkit-box;display:box;width:100%}
 .classify p input{padding:1em}
 .classify p input:first-child{border:1px solid #ccc;}
