@@ -10,7 +10,6 @@ class Index extends React.Component{
                     <div className="left">
                         <article>
                             <h2>{data.title}</h2>
-                            <p className="introduction">{data.content}</p>
                             <div dangerouslySetInnerHTML={{__html: data.content}}></div>
                         </article>
                     </div>

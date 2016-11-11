@@ -12,6 +12,7 @@ let detail = require('./routes/webapp/detail');
 let myblog_login = require('./routes/myblog/login');
 let myblog_index = require('./routes/myblog/index');
 let myblog_user = require('./routes/myblog/user');
+let myblog_add = require('./routes/myblog/add');
 
 let app = express();
 
@@ -41,12 +42,14 @@ app.use('/detail', detail);
 app.use('/myblog/login', myblog_login);
 app.use('/myblog/index', myblog_index);
 app.use('/myblog/user', myblog_user);
+app.use('/myblog/add', myblog_add);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+   /* var err = new Error('Not Found');
     err.status = 404;
-    next(err);
+    next(err);*/
+    res.redirect('/index')
 });
 
 /// error handlers

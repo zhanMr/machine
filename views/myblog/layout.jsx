@@ -16,7 +16,7 @@ let Layout = React.createClass({
                         <section className="left">
                             <ul>
                                 <li><a href="">文章列表</a></li>
-                                <li><a href="">新增文章</a></li>
+                                <li><a href="add">新增文章</a></li>
                                 <li><a href="">留言查看</a></li>
                                 <li><a href="user">账号管理</a></li>
                             </ul>

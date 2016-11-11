@@ -7,6 +7,7 @@ let Layout = React.createClass({
                     <title>{this.props.title}</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                     <link href="/stylesheets/style.css" rel="stylesheet"/>
+                    <link href="/stylesheets/wangEditor.css" rel="stylesheet"/>
                 </head>
                 <body>
                 <header>
