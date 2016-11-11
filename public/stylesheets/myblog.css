@@ -1,14 +1,15 @@
 *{padding: 0px;margin: 0px;list-style: none;}
 html, body,.box{height:100%}
-body {font: 1em;}
-a{color:#333;text-decoration: none;}
+body {font: 1em;background-color:#3a3f51;font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;color:#fff }
+a{color:#fff;text-decoration: none;}
 a:hover{color: #009fde;text-decoration: underline;}
-header{background-color:#2577e3;color:#fff;padding:1em;}
+header{background-color:#2577e3;color:#fff;padding:1em;display:none}
 header h1{font-size:1em;}
 .box{display:-webkit-box;display:box;font-size:0.875em}
-.left{width:10em;height:100%;text-align:center;}
-.left li{line-height:1.5;border-bottom:1px solid #ccc;padding:0.5em 0;}
-.right{height:100%;box-flex:1;-webkit-box-flex:1;border-left: 1px solid #ccc;padding:1.5em;}
+.left{width:15em;height:100%;}
+.left h1{text-align:center;}
+.left li{line-height:1.5;border-bottom:1px solid #ccc;padding: 1em 0 1em 2em}
+.right{height:100%;box-flex:1;-webkit-box-flex:1;border-left: 1px solid #ccc;padding:1.5em;background-color:#f2f4f8;color:#000}
 .content,.classify{padding:1.5em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc}
 .content section{padding:1.5em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc;margin: 0 0 1.5em 0}
 .content section:hover{border:1px solid #009fde;box-shadow:0 0 0.1em #0a56bb;}
