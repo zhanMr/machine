@@ -9,21 +9,36 @@ header h1{font-size:1em;}
 .left{width:15em;height:100%;}
 .left h1{text-align:center;}
 .left li{line-height:1.5;border-bottom:1px solid #ccc;padding: 1em 0 1em 2em}
+.left li:first-child{background-color:#009fde;color:#fff}
+.left li:first-child a{color:#fff}
 .left li a{color:#30a5ff}
-.right{height:100%;box-flex:1;-webkit-box-flex:1;border-left: 1px solid #ccc;padding:1.5em;background-color:#f2f4f8;color:#000}
-.content,.classify{padding:1.5em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc}
+.right{height:100%;box-flex:1;-webkit-box-flex:1;border-left: 1px solid #ccc;padding:1em;background-color:#f2f4f8;color:#000}
+.content{padding:1.5em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc}
 .content section{padding:1.5em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc;margin: 0 0 1.5em 0}
 .content section:hover{border:1px solid #009fde;box-shadow:0 0 0.1em #0a56bb;}
 .content section h2{font-size:0.875em}
-@media screen and (max-width:20em){
+@media screen and (max-width:30em){
 .box{box-orient: vertical; -webkit-box-orient:vertical;}
 .right{padding:0px;}
 .left{width:100%}
 }
-.classify{background-color:#fff}
-.classify p{display:-webkit-box;display:box;width:100%}
-.classify p input{padding:1em}
-.classify p input:first-child{border:1px solid #ccc;}
-.classify p input:last-child{border:1px solid #2577e3;background-color:#2577e3;color:#fff;}
-.classify  div div{border:1px solid #ccc;box-shadow:0 0 0.2em #ccc;margin:1em 0;padding:1em;}
-.classify  div div:hover{border:1px solid #009fde;box-shadow:0 0 0.1em #0a56bb;}
+/*文章分类*/
+.classify{display:box;display:-webkit-box;box-direction:reverse;-webkit-box-direction:reverse}
+.classify_left{width:25em;}
+.classify_left h2{background:#f9243f;text-align:center;color:#fff;font-size:1em;padding:1em 0;border-top-left-radius:0.5em;border-top-right-radius:0.5em}
+.classify_left input{width:100%;padding:1em 0;border:0px;}
+.classify_left p:last-child input{background-color:#009fde;color:#fff;font-weight:bold;border-bottom-left-radius:0.5em;border-bottom-right-radius:0.5em}
+.classify_right{box-flex:1;-webkit-box-flex:1;margin-right:1em;}
+.classify_right section{box-direction:normal;-webkit-box-direction:normal;display:box;display:-webkit-box;padding:1em;border:1px solid #ccc;background:#fff;box-shadow:0 0 0.2em #ccc;margin: 0 0 1em 0;border-radius:0.5em}
+.classify_right section span{display:block;font-family:Arial}
+.classify_right section span:nth-child(1){width:2.5em}
+.classify_right section span:nth-child(2){box-flex:1;-webkit-box-flex:1;color: #009fde;font-weight:bold;}
+.classify_right section span:nth-child(3){font-size:1.2em;color:#f9243f}
+.classify_right section:hover{border:1px solid #009fde;box-shadow:0 0 0.1em #0a56bb;background-color:#009fde;color:#fff}
+.classify_right section:hover span{color:#fff}
+@media screen and (max-width:60em){
+    .classify{box-orient: vertical; -webkit-box-orient:vertical;box-direction:normal;-webkit-box-direction:normal}
+    .classify_left{width:100%;margin-bottom:1em}
+    .classify_right{margin:0}
+}
+/*文章分类 end*/

@@ -5,7 +5,7 @@ class Classify extends React.Component{
         let {title, data} = this.props;
         return (
             <Layout title={title}>
-                <section className="classify" id="JS_Classify"></section>
+                <section  id="JS_Classify"></section>
             </Layout>
         )
     }

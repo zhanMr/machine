@@ -60967,20 +60967,46 @@
 	            var data = _state.data;
 	            var classify = _state.classify;
 
-	            console.log(classify);
 	            _jquery2.default.ajax({
 	                type: 'post',
 	                url: '/myblog/classify/add',
 	                data: { classify: classify },
 	                success: function success(msg) {
 	                    data.unshift({ 'name': classify });
-	                    self.setState({ data: data });
+	                    self.setState({ data: data, classify: '' });
 	                },
 	                error: function error(msg) {
 	                    alert('网络错误，请重试');
 	                }
 	            });
 	        }
+	        //删除分类
+
+	    }, {
+	        key: 'removeClassify',
+	        value: function removeClassify(id) {
+	            var _this2 = this;
+
+	            var data = this.state.data;
+
+	            _jquery2.default.ajax({
+	                type: 'post',
+	                url: '/myblog/classify/remove',
+	                data: { id: id },
+	                success: function success(msg) {
+	                    var now = [];
+	                    data.forEach(function (item) {
+	                        if (item.id != id) now.push(item);
+	                    });
+	                    _this2.setState({ data: now });
+	                },
+	                error: function error(msg) {
+	                    alert('网络错误，请重试');
+	                }
+	            });
+	        }
+	        //获取分类
+
 	    }, {
 	        key: 'getClassify',
 	        value: function getClassify(e) {
@@ -60989,26 +61015,59 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this3 = this;
+
 	            var _state2 = this.state;
 	            var data = _state2.data;
 	            var classify = _state2.classify;
 
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                'section',
+	                { className: 'classify' },
 	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    _react2.default.createElement('input', { type: 'text', value: classify, placeholder: '\u8BF7\u8F93\u5165\u6587\u7AE0\u5206\u7C7B', onChange: this.getClassify.bind(this) }),
-	                    _react2.default.createElement('input', { type: 'button', value: '\u63D0\u4EA4', onClick: this.addClassify.bind(this) })
+	                    'section',
+	                    { className: 'classify_left' },
+	                    _react2.default.createElement(
+	                        'h2',
+	                        null,
+	                        '\u6DFB\u52A0\u6587\u7AE0\u5206\u7C7B'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        _react2.default.createElement('input', { type: 'text', value: classify, placeholder: '\u8BF7\u8F93\u5165\u6587\u7AE0\u5206\u7C7B', onChange: this.getClassify.bind(this) })
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        _react2.default.createElement('input', { type: 'button', value: '\u63D0\u4EA4', onClick: this.addClassify.bind(this) })
+	                    )
 	                ),
-	                data.map(function (item, key) {
-	                    return _react2.default.createElement(
-	                        'div',
-	                        { key: key },
-	                        item.name
-	                    );
-	                })
+	                _react2.default.createElement(
+	                    'section',
+	                    { className: 'classify_right' },
+	                    data.map(function (item, key) {
+	                        return _react2.default.createElement(
+	                            'section',
+	                            { key: key, onClick: _this3.removeClassify.bind(_this3, item.id) },
+	                            _react2.default.createElement(
+	                                'span',
+	                                null,
+	                                key + 1
+	                            ),
+	                            _react2.default.createElement(
+	                                'span',
+	                                null,
+	                                item.name
+	                            ),
+	                            _react2.default.createElement(
+	                                'span',
+	                                null,
+	                                'x'
+	                            )
+	                        );
+	                    })
+	                )
 	            );
 	        }
 	    }]);

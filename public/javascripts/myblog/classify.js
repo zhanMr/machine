@@ -28,37 +28,59 @@ class Classify extends React.Component{
     addClassify(){
         let self = this;
         let {data, classify} = this.state;
-        console.log(classify);
         $.ajax({
             type: 'post',
             url: '/myblog/classify/add',
             data:{classify},
             success: msg => {
                 data.unshift({'name': classify});
-                self.setState({data: data});
+                self.setState({data: data,classify: ''});
             },
             error: msg=> {
                 alert('网络错误，请重试');
             }
         });
     }
+    //删除分类
+    removeClassify(id){
+        let {data} = this.state;
+        $.ajax({
+        type: 'post',
+        url: '/myblog/classify/remove',
+            data:{id},
+            success: msg => {
+                let now = [];
+                data.forEach(item => {
+                    if(item.id != id) now.push(item);
+                });
+                this.setState({data: now});
+            },
+            error: msg=> {
+                alert('网络错误，请重试');
+            }
+        });
+    }
+    //获取分类
     getClassify(e){
         this.setState({classify: e.target.value});
     }
     render(){
         let {data, classify} = this.state;
         return (
-            <div>
-                <p>
-                    <input type="text" value={classify} placeholder="请输入文章分类" onChange={this.getClassify.bind(this)}/>
-                    <input type="button" value="提交" onClick={this.addClassify.bind(this)}/>
-                </p>
-                {data.map((item, key) => {
-                    return (
-                        <div key={key}>{item.name}</div>
-                    )
-                })}
-            </div>
+            <section className="classify">
+               <section className="classify_left">
+                    <h2>添加文章分类</h2>
+                    <p><input type="text" value={classify} placeholder="请输入文章分类" onChange={this.getClassify.bind(this)}/></p>
+                    <p><input type="button" value="提交" onClick={this.addClassify.bind(this)}/></p>
+                </section>
+                <section className="classify_right">
+                    {data.map((item, key) => {
+                        return (
+                            <section key={key} onClick={this.removeClassify.bind(this, item.id)}><span>{key + 1}</span><span>{item.name}</span><span>x</span></section>
+                        )
+                    })}
+                </section>
+            </section>
         )
     }
 }
