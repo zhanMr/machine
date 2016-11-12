@@ -8,21 +8,15 @@ header h1{font-size:1em;}
 .box{display:-webkit-box;display:box;font-size:0.875em}
 .left{width:15em;height:100%;}
 .left h1{text-align:center;}
-.left li{line-height:1.5;border-bottom:1px solid #ccc;padding: 1em 0 1em 2em}
-.left li:first-child{background-color:#009fde;color:#fff}
-.left li:first-child a{color:#fff}
+.left li{line-height:1.5;border-bottom:1px solid #ccc;padding: 1em 0 1em 2em;box-shadow:0 0 0.2em #ccc;}
 .left li a{color:#30a5ff}
 .right{height:100%;box-flex:1;-webkit-box-flex:1;border-left: 1px solid #ccc;padding:1em;background-color:#f2f4f8;color:#000}
-.content{padding:1.5em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc}
-.content section{padding:1.5em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc;margin: 0 0 1.5em 0}
-.content section:hover{border:1px solid #009fde;box-shadow:0 0 0.1em #0a56bb;}
-.content section h2{font-size:0.875em}
-@media screen and (max-width:30em){
+@media screen and (max-width:60em){
+header{margin: 0 0 1em 0}
 .box{box-orient: vertical; -webkit-box-orient:vertical;}
 .right{padding:0px;}
-.left{width:100%}
+.left{width:100%;height:auto;margin: 0 0 1em 0;display:none}
 }
-/*文章分类*/
 .classify{display:box;display:-webkit-box;box-direction:reverse;-webkit-box-direction:reverse}
 .classify_left{width:25em;}
 .classify_left h2{background:#f9243f;text-align:center;color:#fff;font-size:1em;padding:1em 0;border-top-left-radius:0.5em;border-top-right-radius:0.5em}
@@ -41,4 +35,17 @@ header h1{font-size:1em;}
     .classify_left{width:100%;margin-bottom:1em}
     .classify_right{margin:0}
 }
-/*文章分类 end*/
+.message{overflow:hidden}
+.message div{margin: 0 0 1em 0;font-size: 0.875em;color:#333}
+.message input{width:100%;padding:0.5em 0}
+
+
+
+.content section{padding:1em;border:1px solid #ccc;box-shadow:0 0 0.2em #ccc;margin: 0 0 1em 0;background-color:#fff;}
+.content section:hover{border:1px solid #009fde;box-shadow:0 0 0.1em #0a56bb;}
+.content section h2{font-size:1em;color:#009fde}
+.content section a{color:#009fde}
+.content section .time{font-size:0.75em;margin:1em 0}
+.content section .introduction{font-size:0.75em;line-height:1.5em;margin:0.5em 0 0 0}
+.content section p span{margin:0 0.5em}
+.content section .read{font-size:0.75em;}

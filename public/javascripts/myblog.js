@@ -74,6 +74,10 @@
 
 	var _classify2 = _interopRequireDefault(_classify);
 
+	var _content = __webpack_require__(198);
+
+	var _content2 = _interopRequireDefault(_content);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function reactUI(id, item) {
@@ -85,6 +89,7 @@
 	reactUI('JS_User', _react2.default.createElement(_user2.default, null));
 	reactUI('JS_Message', _react2.default.createElement(_message2.default, null));
 	reactUI('JS_Classify', _react2.default.createElement(_classify2.default, null));
+	reactUI('JS_Content', _react2.default.createElement(_content2.default, null));
 
 /***/ },
 /* 1 */
@@ -32158,7 +32163,6 @@
 	            var head = this.head.$txt.html();
 	            var content = this.content.$txt.html();
 	            var title = this.state.title;
-	            console.log(title, content, head);
 	            _jquery2.default.ajax({
 	                type: 'post',
 	                url: '/myblog/add',
@@ -32182,18 +32186,18 @@
 	            var title = this.state.title;
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { className: 'message' },
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
 	                    _react2.default.createElement('input', { type: 'text', value: title, onChange: this.getTitle.bind(this), placeholder: '\u6807\u9898' })
 	                ),
-	                _react2.default.createElement('div', { style: { width: '100%', height: '100px' }, id: 'head', contentEditable: 'true' }),
-	                _react2.default.createElement('div', { style: { width: '100%', height: '500px' }, id: 'content', contentEditable: 'true' }),
+	                _react2.default.createElement('div', { style: { width: '100%', height: '500px' }, id: 'head', contentEditable: 'true' }),
+	                _react2.default.createElement('div', { style: { width: '100%', height: '200px' }, id: 'content', contentEditable: 'true' }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { onClick: this.getMessage.bind(this) },
-	                    '\u63D0\u4EA4'
+	                    null,
+	                    _react2.default.createElement('input', { type: 'button', value: '\u63D0\u4EA4', onClick: this.getMessage.bind(this) })
 	                )
 	            );
 	        }
@@ -61076,6 +61080,140 @@
 	}(_react2.default.Component);
 
 	exports.default = Classify;
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(168);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _jquery = __webpack_require__(176);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Content = function (_React$Component) {
+	    _inherits(Content, _React$Component);
+
+	    function Content(props) {
+	        _classCallCheck(this, Content);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Content).call(this, props));
+
+	        _this.state = {
+	            title: '',
+	            data: []
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Content, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this2 = this;
+
+	            _jquery2.default.ajax({
+	                type: 'post',
+	                url: '/myblog/content',
+	                data: { page: 1 },
+	                success: function success(msg) {
+	                    _this2.setState({ data: msg.data });
+	                    console.log(msg);
+	                },
+	                error: function error(msg) {
+	                    alert('网络错误，请重试');
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'time',
+	        value: function time(date) {
+	            console.log(date);
+	            date = new Date(date);
+	            return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this3 = this;
+
+	            var data = this.state.data;
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'content' },
+	                data.map(function (item, key) {
+	                    return _react2.default.createElement(
+	                        'section',
+	                        { key: key },
+	                        _react2.default.createElement(
+	                            'h2',
+	                            null,
+	                            item.title
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            { className: 'time' },
+	                            item.classify,
+	                            ' ',
+	                            _this3.time(item.time)
+	                        ),
+	                        _react2.default.createElement('div', { className: 'introduction', dangerouslySetInnerHTML: { __html: item.introduction } }),
+	                        _react2.default.createElement(
+	                            'p',
+	                            { className: 'read' },
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '' },
+	                                '\u9605\u8BFB'
+	                            ),
+	                            _react2.default.createElement(
+	                                'span',
+	                                null,
+	                                '|'
+	                            ),
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '' },
+	                                '\u7F16\u8F91'
+	                            ),
+	                            _react2.default.createElement(
+	                                'span',
+	                                null,
+	                                '|'
+	                            ),
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '' },
+	                                '\u5220\u9664'
+	                            )
+	                        )
+	                    );
+	                })
+	            );
+	        }
+	    }]);
+
+	    return Content;
+	}(_react2.default.Component);
+
+	exports.default = Content;
 
 /***/ }
 /******/ ]);

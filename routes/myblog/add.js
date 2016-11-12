@@ -12,7 +12,7 @@ router.post('/', function(req, res) {
     let content = req.body.content;
     let title = req.body.title;
     let success = false;
-    let sql = `insert into content(title, introduction, content, time, access) values ('${title}', '${head}', '${content.replace(/\'/g,"\"")}', '${(new Date()).getTime()}', '${0}')`;
+    let sql = `insert into art(title, classify, introduction, content, time) values ('${title}','Node', '${head.replace(/\'/g,"\"")}', '${content.replace(/\'/g,"\"")}', '${(new Date()).getTime()}')`;
     console.log(sql);
     db(sql, ((err, rows, fields) => {
             console.log(err)

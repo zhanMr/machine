@@ -5,7 +5,7 @@ class Index extends React.Component{
         let {title} = this.props;
         return (
             <Layout title={title}>
-                <div id="JS_Message"></div>
+                <section id="JS_Message"></section>
             </Layout>
         )
     }

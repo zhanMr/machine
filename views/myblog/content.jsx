@@ -5,7 +5,8 @@ class Content extends React.Component{
         let {title, data} = this.props;
         return (
             <Layout title={title}>
-                <div className="content">
+                <section id="JS_Content"></section>
+                <div className="content" style={{display:'none'}}>
                     {data.map(item => {
                         return (
                             <section>

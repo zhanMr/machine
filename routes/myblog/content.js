@@ -12,4 +12,14 @@ router.get('/', function(req, res) {
 
 });
 
+router.post('/', function(req, res) {
+    let page = parseInt(req.body.page) || 1;
+    let number = 4;
+    let sql = `select * from art ORDER BY id DESC limit ${(page - 1)*number}, ${page*number}`;
+    db(sql, (err, row, field) => {
+        res.json({data: row})
+    })
+
+});
+
 module.exports = router;

@@ -23,7 +23,6 @@ class Message extends React.Component{
         let head = this.head.$txt.html();
         let content = this.content.$txt.html();
         let title = this.state.title;
-        console.log(title, content, head);
         $.ajax({
             type: 'post',
             url: '/myblog/add',
@@ -42,11 +41,11 @@ class Message extends React.Component{
     render(){
         let title = this.state.title;
         return (
-            <div>
+            <div className="message">
                 <div><input type="text" value={title} onChange={this.getTitle.bind(this)} placeholder="标题"/></div>
-                <div style={{width:'100%', height: '100px'}} id="head" contentEditable="true"></div>
-                <div style={{width:'100%', height: '500px'}} id="content" contentEditable="true"></div>
-                <div onClick={this.getMessage.bind(this)}>提交</div>
+                <div style={{width:'100%', height: '500px'}} id="head" contentEditable="true"></div>
+                <div style={{width:'100%', height: '200px'}} id="content" contentEditable="true"></div>
+                <div><input type="button" value="提交" onClick={this.getMessage.bind(this)}/></div>
             </div>
         );
     }
