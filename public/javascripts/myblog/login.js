@@ -25,7 +25,7 @@ class Login extends React.Component{
             url: '/myblog/login',
             data: {user, password},
             success: msg => {
-                if(msg.success) location.href = '/myblog/index';
+                if(msg.success) location.href = '/myblog/content';
 
             },
             error: msg=> {

@@ -24,11 +24,12 @@ router.post('/',(req, res) => {
         if(!err && rows.length){
             let time = (new Date()).getTime();
             let cache = time + 24*60*60*1000;
-            let cookie = {httpOnly: true, expires: new Date(cache)};
+            //let cookie = {httpOnly: true, expires: new Date(cache)};
             db(`update login set time = ${time} where username = '${user}'`, ((err, rows, fields) => {
                 if(!err){
-                    res.cookie('password', password, cookie);
-                    res.cookie('time', time, cookie);
+                    res.cookie('user', user);
+                    res.cookie('time', time);
+                    req.session.user = {'key': `${user}/${time}`};
                     success = true;
                  }else{
                     success = false;

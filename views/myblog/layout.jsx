@@ -19,7 +19,7 @@ let Layout = React.createClass({
                                 <li><a href="add">添加文章</a></li>
                                 <li><a href="classify">文章分类</a></li>
                                 <li><a href="user">密码修改</a></li>
-                                <li><a href="">注销</a></li>
+                                <li><a href="logoff">注销</a></li>
                             </ul>
                         </section>
                         <section className="right">

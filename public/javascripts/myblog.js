@@ -21585,7 +21585,7 @@
 	                url: '/myblog/login',
 	                data: { user: user, password: password },
 	                success: function success(msg) {
-	                    if (msg.success) location.href = '/myblog/index';
+	                    if (msg.success) location.href = '/myblog/content';
 	                },
 	                error: function error(msg) {
 	                    alert('网络错误，请重试');
