@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-
+import Page from './Page';
 class Content extends React.Component{
     constructor(props){
         super(props);
@@ -13,10 +13,9 @@ class Content extends React.Component{
         $.ajax({
             type: 'post',
             url: '/myblog/content',
-                data:{page: 1},
+            data:{page: 1},
             success: msg => {
                 this.setState({data: msg.data})
-                console.log(msg);
             },
             error: msg=> {
                 alert('网络错误，请重试');
@@ -24,7 +23,6 @@ class Content extends React.Component{
         });
     }
     time(date){
-        console.log(date);
         date = new Date(date);
         return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
     }
@@ -42,6 +40,7 @@ class Content extends React.Component{
                         </section>
                     )
                 })}
+                <Page number={4} page = {1}/>
             </div>
         );
     }

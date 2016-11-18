@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'mysession',
     cookie:{
-        maxAge:60 * 1000
+        maxAge:60 * 60 * 1000
     }
 }));
 //中间件
@@ -44,7 +44,6 @@ app.get(/myblog/, (req, res, next) =>{
     let user = req.session;
     let loginUrl = '/myblog/login';
     let isLogin = req.url === loginUrl;
-    console.log(req.session);
     if(req.session.user){
         isLogin ? res.redirect('/myblog/index') : next();
     }else{

@@ -26,6 +26,22 @@
     </style>
 </head>
 <body>
-<div id="box"></div>
+
+<div id="box" class="box1 box2">
+    <ul>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+    </ul>
+</div>
+<div id="test"></div>
+<script type="text/javascript">
+    var box = document.getElementById('box');
+    box.classList.add('box3');
+    box.classList.remove('box1');
+
+    document.getElementById('test').innerHTML = '<p>aaaa</p>'
+</script>
 </body>
 </html>

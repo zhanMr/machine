@@ -61101,6 +61101,10 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
+	var _Page = __webpack_require__(199);
+
+	var _Page2 = _interopRequireDefault(_Page);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61135,7 +61139,6 @@
 	                data: { page: 1 },
 	                success: function success(msg) {
 	                    _this2.setState({ data: msg.data });
-	                    console.log(msg);
 	                },
 	                error: function error(msg) {
 	                    alert('网络错误，请重试');
@@ -61145,7 +61148,6 @@
 	    }, {
 	        key: 'time',
 	        value: function time(date) {
-	            console.log(date);
 	            date = new Date(date);
 	            return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
 	        }
@@ -61205,7 +61207,8 @@
 	                            )
 	                        )
 	                    );
-	                })
+	                }),
+	                _react2.default.createElement(_Page2.default, { number: 4, page: 1 })
 	            );
 	        }
 	    }]);
@@ -61214,6 +61217,103 @@
 	}(_react2.default.Component);
 
 	exports.default = Content;
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(168);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Page = function (_React$Component) {
+	    _inherits(Page, _React$Component);
+
+	    function Page() {
+	        _classCallCheck(this, Page);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Page).apply(this, arguments));
+	    }
+
+	    _createClass(Page, [{
+	        key: 'render',
+	        value: function render() {
+	            var _props = this.props;
+	            var page = _props.page;
+	            var number = _props.number;
+
+	            var start = 1;
+	            var arr = [];
+	            if (number > 6) {
+	                if (page + 5 >= number) {
+	                    start = number - 5;
+	                } else {
+	                    start = page;
+	                }
+	                for (var i = start; i <= start + 5; i++) {
+	                    arr.push(i);
+	                }
+	            } else {
+	                for (var _i = start; _i <= number; _i++) {
+	                    arr.push(_i);
+	                }
+	            }
+	            return _react2.default.createElement(
+	                'ul',
+	                { className: 'page' },
+	                page > 1 && _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/index?page=' + (page - 1) },
+	                        '\u4E0A\u4E00\u9875'
+	                    )
+	                ),
+	                arr.map(function (item, key) {
+	                    return _react2.default.createElement(
+	                        'li',
+	                        { className: page == item ? 'active' : '', key: key },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/index?page=' + item },
+	                            item
+	                        )
+	                    );
+	                }),
+	                page < number && _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/index?page=' + (page + 1) },
+	                        '\u4E0B\u4E00\u9875'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Page;
+	}(_react2.default.Component);
+
+	exports.default = Page;
 
 /***/ }
 /******/ ]);
