@@ -60950,16 +60950,35 @@
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            var self = this;
-	            _jquery2.default.ajax({
-	                type: 'get',
-	                url: '/myblog/classify/search',
-	                success: function success(msg) {
-	                    self.setState({ data: msg.data });
-	                },
-	                error: function error(msg) {
-	                    alert('网络错误，请重试');
+	            /*     $.ajax({
+	                     type: 'get',
+	                     url: '/myblog/classify/search',
+	                     success: msg => {
+	                         self.setState({data: msg.data});
+	                     },
+	                     error: msg=> {
+	                         alert('网络错误，请重试');
+	                     }
+	                 });*/
+
+	            var xhr = new XMLHttpRequest();
+	            xhr.onload = function () {
+	                if (xhr.readyState == 4) {
+	                    if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+	                        //alert(xhr.responseText);
+	                        self.setState({ data: JSON.parse(xhr.responseText).data });
+	                    } else {
+	                        alert('请求失败： ' + xhr.status);
+	                    }
 	                }
-	            });
+	            };
+
+	            xhr.onprogress = function (e) {
+	                console.log(e);
+	            };
+
+	            xhr.open('get', '/myblog/classify/search?id=1', false);
+	            xhr.send(null);
 	        }
 	        //增加分类
 
@@ -60967,22 +60986,40 @@
 	        key: 'addClassify',
 	        value: function addClassify() {
 	            var self = this;
+	            //let {data, classify} = this.state;
+	            /*        $.ajax({
+	                        type: 'post',
+	                        url: '/myblog/classify/add',
+	                        data:{classify},
+	                        success: msg => {
+	                            data.unshift({'name': classify});
+	                            self.setState({data: data,classify: ''});
+	                        },
+	                        error: msg=> {
+	                            alert('网络错误，请重试');
+	                        }
+	                    });*/
 	            var _state = this.state;
 	            var data = _state.data;
 	            var classify = _state.classify;
 
-	            _jquery2.default.ajax({
-	                type: 'post',
-	                url: '/myblog/classify/add',
-	                data: { classify: classify },
-	                success: function success(msg) {
-	                    data.unshift({ 'name': classify });
-	                    self.setState({ data: data, classify: '' });
-	                },
-	                error: function error(msg) {
-	                    alert('网络错误，请重试');
+	            var param = new FormData();
+	            param.append('classify', classify);
+	            var xhr = new XMLHttpRequest();
+	            xhr.onload = function () {
+	                if (xhr.readyState == 4) {
+	                    if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+	                        alert(xhr.responseText);
+	                    } else {
+	                        alert('请求失败： ' + xhr.status);
+	                    }
 	                }
-	            });
+	            };
+
+	            xhr.open('POST', '/myblog/classify/add');
+	            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+	            xhr.send('classify=' + classify);
 	        }
 	        //删除分类
 

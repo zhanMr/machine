@@ -24,5 +24,16 @@ router.get('/', function(req, res) {
     })
   })
 })
-
+let data = {
+  'name': 'my',
+  'id': 100
+};
+router.get('/my', function(req, res) {
+  let callback = req.query.jsoncallback;
+  if (callback) {
+    res.end(`${callback}(${JSON.stringify(data)})`);//jsonp
+  } else {
+    res.end(JSON.stringify(data));//普通json
+  }
+})
 module.exports = router;

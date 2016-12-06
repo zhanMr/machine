@@ -2,7 +2,7 @@ let React = require('react');
 let Layout = React.createClass({
     render: function(){
         return (
-            <html>
+            <html manifest="/application.appcache">
                 <head>
                     <title>{this.props.title}</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>

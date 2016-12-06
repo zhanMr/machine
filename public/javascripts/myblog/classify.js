@@ -13,7 +13,7 @@ class Classify extends React.Component{
     //初始化分类
     componentDidMount(){
         let self = this;
-        $.ajax({
+   /*     $.ajax({
             type: 'get',
             url: '/myblog/classify/search',
             success: msg => {
@@ -22,13 +22,36 @@ class Classify extends React.Component{
             error: msg=> {
                 alert('网络错误，请重试');
             }
-        });
+        });*/
+      
+
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.readyState == 4){
+                if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+                    //alert(xhr.responseText);
+                    self.setState({data: JSON.parse(xhr.responseText).data});
+                  
+                }else{
+                    alert('请求失败： ' + xhr.status);
+                }
+            }
+        }
+
+        xhr.onprogress = (e) => {
+            console.log(e);
+        }
+
+        xhr.open('get', '/myblog/classify/search?id=1', false);
+        xhr.send(null);
+
+
     }
     //增加分类
     addClassify(){
         let self = this;
-        let {data, classify} = this.state;
-        $.ajax({
+        //let {data, classify} = this.state;
+/*        $.ajax({
             type: 'post',
             url: '/myblog/classify/add',
             data:{classify},
@@ -39,7 +62,25 @@ class Classify extends React.Component{
             error: msg=> {
                 alert('网络错误，请重试');
             }
-        });
+        });*/
+        let {data, classify} = this.state;
+        let param = new FormData();
+        param.append('classify', classify);
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.readyState == 4){
+                if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+                    alert(xhr.responseText);
+                }else{
+                    alert('请求失败： ' + xhr.status);
+                }
+            }
+        }
+      
+        xhr.open('POST','/myblog/classify/add');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.send(`classify=${classify}`);
     }
     //删除分类
     removeClassify(id){

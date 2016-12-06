@@ -8,6 +8,7 @@ router.get('/', function(req, res) {
 });
 //查询分类
 router.get('/search', function(req, res) {
+ 
     db(`select * from classify order by name desc`, (err, rows, fields) => {
         console.log(rows);
         console.log(err);
@@ -19,6 +20,7 @@ router.get('/search', function(req, res) {
 //添加分类
 router.post('/add', function(req, res) {
     let classify = req.body.classify;
+    console.log(req.body);
     db(`insert into classify (name) values ('${classify}')`, (err, rows, fields) => {
         res.json({data: rows});
     })

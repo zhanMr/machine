@@ -64,6 +64,10 @@
 	    _reactDom2.default.render(_react2.default.createElement(_search2.default, null), document.getElementById('JS_Search'));
 	}
 
+	window.addEventListener('message', function (e) {
+	    console.log(e);
+	}, true);
+
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
