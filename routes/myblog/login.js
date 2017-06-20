@@ -13,11 +13,12 @@ function encrypt(str, type){
 router.get('/', function(req, res) {
     res.render('myblog/login', { title: '登录'});
 });
-
+//
 //登录验证
 router.post('/',(req, res) => {
     let user = req.body.user;
-    let password = encrypt(req.body.password, 'sha1');
+    //let password = encrypt(req.body.password, 'sha1');
+    let password = req.body.password;
     let sql = `select * from login where username = '${user}' and password = '${password}'`;
     let success = false;
     let login = ((err, rows, fields) => {

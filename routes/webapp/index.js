@@ -13,9 +13,9 @@ router.get('/', function(req, res) {
   let sql;
   let number = 4;
   if(key){
-    sql = `select * from content where title LIKE '%${key}%' OR introduction LIKE '%${key}%'`;
+    sql = `select * from art where title LIKE '%${key}%' OR introduction LIKE '%${key}%'`;
   }else{
-    sql = `select * from content ORDER BY id DESC limit ${(page - 1)*number}, ${page*number}`;
+    sql = `select * from art ORDER BY id DESC limit ${(page - 1)*number}, ${page*number}`;
   }
   console.log(sql);
   db(sql, (err, row, field) => {

@@ -18,7 +18,7 @@ const classify = require('./routes/myblog/classify');
 const logoff =  require('./routes/myblog/logoff');
 
 const app = express();
-console.log('test......');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jsx');
